@@ -1,0 +1,38 @@
+<html>
+
+<head>
+  <title>ALTA DE CLIENTES</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+
+<div class="w3-container w3-teal">
+    <h1>ALTA DE CLIENTES</h1>
+    </div>
+
+<div class="w3-bar w3-border w3-black">
+    <a href="https://www.joseantoniomarquez.me/" class="w3-bar-item w3-button w3-hover-none w3-text-grey w3-hover-text-white">Home</a>
+    <a href="https://www.joseantoniomarquez.me/MostrarDatos/mostrarDatos.php" class="w3-bar-item w3-button w3-hover-none w3-text-grey w3-hover-text-white">Registro de Clientes</a>
+    <a href="https://www.joseantoniomarquez.me/ConsultaClientes/" class="w3-bar-item w3-button w3-hover-none w3-text-grey w3-hover-text-white">Consulta Cliente</a>
+    <a href="https://www.joseantoniomarquez.me/RegistroClientes/" class="w3-bar-item w3-button">Alta Cliente</a>
+    <a href="https://www.joseantoniomarquez.me/BorrarDatos/" class="w3-bar-item w3-button w3-hover-none w3-text-grey w3-hover-text-white">Baja Cliente</a>
+    <a href="https://www.joseantoniomarquez.me/UpdateCliente/" class="w3-bar-item w3-button w3-hover-none w3-text-grey w3-hover-text-white">Modificar Cliente</a>
+</div>
+  <?php
+  $conexion = mysqli_connect("localhost", "fuesdawy", "Nilocamilalinda7", "fuesdawy_Clientes") or
+    die("Problemas con la conexión");
+
+  mysqli_query($conexion, "insert into clientes(nombre,apellido_1,apellido_2,sexo,direccion,correo,telefono,fecha_nacimiento,poblacion,provincia,contrasena,dni,twitter) values 
+                       ('$_REQUEST[nombre]','$_REQUEST[apellido1]','$_REQUEST[apellido2]','$_REQUEST[sexo]','$_REQUEST[direccion]','$_REQUEST[correo]','$_REQUEST[telefono]','$_REQUEST[fecha]','$_REQUEST[poblacion]','$_REQUEST[provincia]','$_REQUEST[contrasena]','$_REQUEST[dni]','$_REQUEST[twitter]')")
+    or die("Problemas en el select" . mysqli_error($conexion));
+
+  mysqli_close($conexion);
+
+  echo "El alumno fue dado de alta.";
+
+  ?>
+</body>
+
+</html>

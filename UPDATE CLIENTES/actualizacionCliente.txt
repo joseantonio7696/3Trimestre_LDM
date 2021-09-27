@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>Actualizacion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body class="w3-teal">
+
+<div class="w3-bar w3-border w3-black">
+    <a href="https://www.joseantoniomarquez.me/" class="w3-bar-item w3-button w3-hover-none w3-text-grey w3-hover-text-white">Home</a>
+    <a href="https://www.joseantoniomarquez.me/MostrarDatos/mostrarDatos.php" class="w3-bar-item w3-button w3-hover-none w3-text-grey w3-hover-text-white">Registro de Clientes</a>
+    <a href="https://www.joseantoniomarquez.me/ConsultaClientes/" class="w3-bar-item w3-button w3-hover-none w3-text-grey w3-hover-text-white">Consulta Cliente</a>
+    <a href="https://www.joseantoniomarquez.me/RegistroClientes/" class="w3-bar-item w3-button w3-hover-none w3-text-grey w3-hover-text-white">Alta Cliente</a>
+    <a href="https://www.joseantoniomarquez.me/BorrarDatos/" class="w3-bar-item w3-button w3-hover-none w3-text-grey w3-hover-text-white">Baja Cliente</a>
+    <a href="https://www.joseantoniomarquez.me/UpdateCliente/" class="w3-bar-item w3-button">Modificar Cliente</a>
+</div>
+    <?php
+    $conexion = mysqli_connect("localhost", "fuesdawy", "Nilocamilalinda7", "fuesdawy_Clientes") or
+        die("Problemas con la conexión");
+
+    mysqli_query($conexion, "update clientes
+                          set NOMBRE='$_REQUEST[nombrenuevo]',APELLIDO_1='$_REQUEST[apellido1nuevo]',APELLIDO_2='$_REQUEST[apellido2nuevo]',DIRECCION='$_REQUEST[direccionnuevo]',CORREO='$_REQUEST[mailnuevo]',TELEFONO='$_REQUEST[telefononuevo]',POBLACION='$_REQUEST[poblacionnuevo]',PROVINCIA='$_REQUEST[provincianuevo]',CONTRASENA='$_REQUEST[contrasenanuevo]',TWITTER='$_REQUEST[twitternuevo]' 
+                        where CORREO='$_REQUEST[mailviejo]'") or
+        die("Problemas en el select:" . mysqli_error($conexion));
+    echo "El cliente fue modificado con exito";
+    ?>
+</body>
+
+</html>
